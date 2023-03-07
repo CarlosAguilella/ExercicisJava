@@ -17,11 +17,12 @@ class Carrera {
 
     void iniciar (){
         while(true) {
-            System.out.println("-".repeat(distancia));
+            System.out.println("X".repeat(distancia));
             coches.forEach(coche -> {
                 coche.acelerar(Coche.maxVelocidad /2-random.nextInt(Coche.maxVelocidad));
                 coche.mover();
-                System.out.println(" ".repeat(coche.distancia) + coche.piloto + " (" + coche.velocidad + ", " + coche.desgaste + ")");
+                System.out.println("_".repeat(coche.distancia) + "\uD83C\uDFCE"+coche.piloto + "\uD83C\uDFCE");
+                        //+ " (" + coche.velocidad + ", " + coche.desgaste + ")");
             });
 
             Coche primero = primeraPosicion();
@@ -34,7 +35,7 @@ class Carrera {
     }
 
     private void imprimePodium() {
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 20; i++) {
             Coche elNano = primeraPosicion();
             System.out.println("El piloto "+ elNano.piloto+" ha quedado en "+(i+1)+" posicion.");
             coches.remove(elNano);
@@ -68,7 +69,7 @@ class Coche {
 
     void acelerar(int velocidad){
         this.velocidad += velocidad;
-        this.velocidad -= desgaste /4;
+        this.velocidad -= desgaste /10;
 
         if (this.velocidad<1){
             this.velocidad=1;
@@ -88,18 +89,28 @@ class Coche {
 public class Main {
     public static void main(String[] args) {
 
-        Carrera carrera = new Carrera(200);
+        Carrera carrera = new Carrera(150);
 
-        carrera.inscribir(new Coche("Carlos"));
-        carrera.inscribir(new Coche("Hector"));
-        carrera.inscribir(new Coche("Josep"));
-        carrera.inscribir(new Coche("Manuel"));
-        carrera.inscribir(new Coche("Gerard"));
-        carrera.inscribir(new Coche("Alejandro"));
-        carrera.inscribir(new Coche("JPene "));
-        carrera.inscribir(new Coche("Alonso"));
-        carrera.inscribir(new Coche("Hamilton"));
-        carrera.inscribir(new Coche("LeClerc"));
+        carrera.inscribir(new Coche("VERSTAPPEN"));
+        carrera.inscribir(new Coche("LECLERC"));
+        carrera.inscribir(new Coche("RUSSELL"));
+        carrera.inscribir(new Coche("OCON"));
+        carrera.inscribir(new Coche("NORRIS"));
+        carrera.inscribir(new Coche("BOTTAS"));
+        carrera.inscribir(new Coche("STROLL"));
+        carrera.inscribir(new Coche("MAGNUSSEN"));
+        carrera.inscribir(new Coche("TSUNODA"));
+        carrera.inscribir(new Coche("DON FERNANDO ALONSO"));
+        carrera.inscribir(new Coche("ALBON"));
+        carrera.inscribir(new Coche("PEREZ"));
+        carrera.inscribir(new Coche("SAINZ"));
+        carrera.inscribir(new Coche("HAMILTON"));
+        carrera.inscribir(new Coche("GASLY"));
+        carrera.inscribir(new Coche("PIASTRI"));
+        carrera.inscribir(new Coche("GUANYU"));
+        carrera.inscribir(new Coche("HULKENBERG"));
+        carrera.inscribir(new Coche("DE VRIES"));
+        carrera.inscribir(new Coche("SARGEANT"));
 
         carrera.iniciar();
     }
